@@ -1,6 +1,7 @@
 using BuisnessLogic.BuisnessLogic;
 using BuisnessLogic.BuisnessLogicInterfaces;
 using BuisnessLogic.StorageInterfaces;
+using BuisnessLogic.ViewModels;
 using DatabaseImplement.Implements;
 using EmployeeView;
 using System;
@@ -16,6 +17,7 @@ namespace ClientView
     internal static class Program
     {
         private static IUnityContainer container = null;
+        public static EmployeeViewModel employee = null;
         public static IUnityContainer Container
         {
             get
