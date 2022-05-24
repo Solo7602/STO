@@ -47,6 +47,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ремонтыПоРаботамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.визитыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupeBox.SuspendLayout();
@@ -220,7 +221,8 @@
             // отчетыToolStripMenuItem
             // 
             this.отчетыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ремонтыПоРаботамToolStripMenuItem});
+            this.ремонтыПоРаботамToolStripMenuItem,
+            this.визитыToolStripMenuItem});
             this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
             this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.отчетыToolStripMenuItem.Text = "Отчеты";
@@ -231,6 +233,13 @@
             this.ремонтыПоРаботамToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.ремонтыПоРаботамToolStripMenuItem.Text = "Ремонты по работам";
             this.ремонтыПоРаботамToolStripMenuItem.Click += new System.EventHandler(this.ремонтыПоРаботамToolStripMenuItem_Click);
+            // 
+            // визитыToolStripMenuItem
+            // 
+            this.визитыToolStripMenuItem.Name = "визитыToolStripMenuItem";
+            this.визитыToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
+            this.визитыToolStripMenuItem.Text = "Ремонты";
+            this.визитыToolStripMenuItem.Click += new System.EventHandler(this.ремонтыToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -277,5 +286,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ремонтыПоРаботамToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem визитыToolStripMenuItem;
     }
 }

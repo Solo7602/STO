@@ -14,6 +14,8 @@ namespace BuisnessLogic.ViewModels
         public int? EmployeeId { get; set; }
         public int? WorkId { get; set; }
         public string WorkName { get; set; }
+        public DateTime DateTo { get; set; }
+        public DateTime DateFrom { get; set; }
         public RepairStatus Status { get; set; }
     }
 }

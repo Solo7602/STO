@@ -45,6 +45,19 @@ namespace DatabaseImplement.Implements
             .FirstOrDefault(rec => rec.Id == model.Id);
             return repair != null ? CreateModel(repair) : null;
         }
+        public List<RepairViewModel> GetFilteredListDate(RepairBindingModel model)
+        {
+            if (model == null)
+            {
+                return null;
+            }
+            using var context = new StoDatabase();
+            return context.Repairs.Include(rec => rec.Client)
+            .Include(rec => rec.Work).Where(rec => rec.Id.Equals(model.Id) || rec.DateStart >= model.DateFrom && rec.DateStart <= model.DateTo)
+            .Select(CreateModel)
+
+            .ToList();
+        }
         public void Insert(RepairBindingModel model)
         {
             using var context = new StoDatabase();
@@ -95,6 +108,7 @@ namespace DatabaseImplement.Implements
         {
             return new RepairViewModel
             {
+                WorkName = repair?.Work?.WorkName,
                 Id = repair.Id,
                 Name = repair.Name,
                 WorkId = repair.WorkId,

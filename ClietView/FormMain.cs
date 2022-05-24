@@ -132,5 +132,11 @@ namespace ClientView
                 }
             }
         }
+
+        private void ремонтыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Program.Container.Resolve<FormReportRepair>();
+            form.ShowDialog();
+        }
     }
 }

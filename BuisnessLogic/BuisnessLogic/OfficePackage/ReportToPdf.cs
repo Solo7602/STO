@@ -34,7 +34,7 @@ namespace BuisnessLogic.BusinessLogic.OfficePackage
             {
                 CreateRow(new PdfRowParameters
                 {
-                    Texts = new List<string> { order.DateCreate.ToShortDateString(),order.Sum.ToString(), order.ClientName
+                    Texts = new List<string> { order.DateCreate.ToShortDateString(),order.Sum.ToString(), order.Name
                 },
                     Style = "Normal",
                     ParagraphAlignment = PdfParagraphAlignmentType.Left

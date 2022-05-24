@@ -13,5 +13,6 @@ namespace BuisnessLogic.StorageInterfaces
         void Insert(RepairBindingModel model);
         void Update(RepairBindingModel model);
         void Delete(RepairBindingModel model);
+        List<RepairViewModel> GetFilteredListDate(RepairBindingModel model);
     }
 }

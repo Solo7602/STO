@@ -36,7 +36,7 @@ namespace BuisnessLogic.BusinessLogic.OfficePackage
                 {
                     ColumnName = "A",
                     RowIndex = rowIndex,
-                    Text = pc.Date.ToString(),
+                    Text = pc.Name.ToString(),
                     StyleInfo = ExcelStyleInfoType.Text
                 });
                 rowIndex++;

@@ -14,5 +14,7 @@ namespace BuisnessLogic.BindingModels
         public RepairStatus Status { get; set; }
         public int? EmployeeId { get; set; }
         public int WorkId { get; set; }
+        public DateTime DateTo { get; set; }
+        public DateTime DateFrom { get; set; }
     }
 }

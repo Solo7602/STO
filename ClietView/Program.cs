@@ -9,6 +9,7 @@ using ClietView;
 using DatabaseImplement.Implements;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -41,6 +42,19 @@ namespace ClientView
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Container.Resolve<MailWorker>().MailConfig(new MailConfigBindingModel()
+            {
+                MailLogin = ConfigurationManager.AppSettings["MailLogin"],
+                MailPassword =
+            ConfigurationManager.AppSettings["MailPassword"],
+                SmtpClientHost =
+            ConfigurationManager.AppSettings["SmtpClientHost"],
+                SmtpClientPort =
+            Convert.ToInt32(ConfigurationManager.AppSettings["SmtpClientPort"]),
+                PopHost = ConfigurationManager.AppSettings["PopHost"],
+                PopPort =
+            Convert.ToInt32(ConfigurationManager.AppSettings["PopPort"])
+            });
             Application.Run(Container.Resolve<FormRegistration>());
         }
         private static IUnityContainer BuildUnityContainer()
@@ -75,6 +89,8 @@ namespace ClientView
             currentContainer.RegisterType<ReportToPdf, SaveToPdf>(new
             HierarchicalLifetimeManager());
             currentContainer.RegisterType<ReportLogic>(new
+            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<MailWorker>(new
             HierarchicalLifetimeManager());
             return currentContainer;
         }
