@@ -30,23 +30,24 @@ namespace ClientView
             try
             {
                 var lastPay = _logic.GetLastPay(new PaymentBindingModel() { RepairId = id });
-                int remain= _logicRep.Read(new RepairBindingModel() { Id = id})[0].Sum - Convert.ToInt32(textBoxSum.Text);
-                if(lastPay != null)
+                PaymentBindingModel nextPay = new PaymentBindingModel();
+                if (lastPay != null)
                 {
-                    remain = lastPay.Remain - Convert.ToInt32(textBoxSum.Text);
-                    if (remain < 0) remain = 0;
+                    nextPay.Sum = Convert.ToDecimal(textBoxSum.Text);
+                    nextPay.Remain=lastPay.Remain- Convert.ToDecimal(textBoxSum.Text);
                 }
-                
-                _logic.CreateOrUpdate(new PaymentBindingModel
+                else
                 {
-                    Remain = remain,
-                    RepairId = id,
-                    Sum = Convert.ToInt32(textBoxSum.Text),
-
-                });
-                MessageBox.Show("Оплата прошла успешно, осталось оплатить: "+remain, "Сообщение",
+                    var sumTemp = _logicRep.Read(new RepairBindingModel() { Id = id })[0].Sum;
+                    nextPay.Sum = Convert.ToDecimal(textBoxSum.Text);
+                    nextPay.Remain=sumTemp - Convert.ToDecimal(textBoxSum.Text);
+                }
+                nextPay.RepairId = id;
+                nextPay.Date = DateTime.Now;
+                
+                _logic.CreateOrUpdate(nextPay);
+                MessageBox.Show("Оплата прошла успешно, осталось оплатить: "+nextPay.Remain, "Сообщение",
                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
             }
             catch (Exception ex)
             {
@@ -60,7 +61,11 @@ namespace ClientView
             try
             {
                 var lastPay = _logic.GetLastPay(new PaymentBindingModel() { RepairId = id });
-                labelRemain.Text = lastPay.Remain.ToString();
+                if(lastPay != null)
+                {
+                    labelRemain.Text = lastPay.Remain.ToString();
+                }
+                
 
                 var list = _logic.Read(new PaymentBindingModel() { RepairId = id});
                 if (list != null)

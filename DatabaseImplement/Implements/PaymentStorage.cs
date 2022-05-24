@@ -40,9 +40,9 @@ namespace DatabaseImplement.Implements
             }
             using var context = new StoDatabase();
             var payment = context.Payments
-             .Include(x=>x.Repair)
-             .OrderByDescending(x => x.Id)
-            .LastOrDefault(rec => rec.RepairId == model.RepairId);
+             .Include(x => x.Repair)
+             .Where(x=>x.RepairId==model.RepairId)
+             .OrderBy(x => x.Date).LastOrDefault();
             return payment != null ? CreateModel(payment) : null;
         }
         public void Insert(PaymentBindingModel model)
@@ -83,6 +83,7 @@ namespace DatabaseImplement.Implements
             payment.Sum = model.Sum;
             payment.RepairId = model.RepairId;
             payment.Remains = model.Remain;
+            payment.Date = model.Date;
             return payment;
         }
         private static PaymentViewModel CreateModel(Payment payment)
@@ -93,7 +94,8 @@ namespace DatabaseImplement.Implements
                 Remain = payment.Remains,
                 //RepairName = payment.Repair.Name,
                 RepairId = payment.RepairId,
-                Sum = payment.Sum
+                Sum = payment.Sum,
+                Date = payment.Date,
             };
         }
     }

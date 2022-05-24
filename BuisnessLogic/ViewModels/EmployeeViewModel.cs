@@ -20,6 +20,6 @@ namespace BuisnessLogic.ViewModels
         public string EmployeePhoneNumber { get; set; }
         public string EmployeePassword { get; set; }   
         [DisplayName("Добавка к окладу")]
-        public int EmployeePrize { get; set; }
+        public decimal EmployeePrize { get; set; }
     }
 }

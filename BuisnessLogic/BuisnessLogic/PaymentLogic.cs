@@ -19,15 +19,6 @@ namespace BuisnessLogic.BuisnessLogic
         }
         public void CreateOrUpdate(PaymentBindingModel model)
         {
-            var element = paymentStorage.GetElement(new PaymentBindingModel
-            {
-                Sum = model.Sum,
-                Remain = model.Remain
-            });
-            if (element != null && element.Id != model.Id)
-            {
-                throw new Exception("Уже есть пользователь с такой почтой");
-            }
             if (model.Id.HasValue)
             {
                 paymentStorage.Update(model);

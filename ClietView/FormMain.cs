@@ -1,4 +1,5 @@
 ﻿using BuisnessLogic.BindingModels;
+using BuisnessLogic.BuisnessLogic;
 using BuisnessLogic.BuisnessLogicInterfaces;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,11 @@ namespace ClientView
 {
     public partial class FormMain : Form
     {
+        private ReportLogic reportLogic;
         private IRepairLogic repairLogic;
-        public FormMain(IRepairLogic repair)
+        public FormMain(IRepairLogic repair, ReportLogic reportLogic)
         {
+            this.reportLogic = reportLogic;
             repairLogic = repair;
             InitializeComponent();
         }
@@ -102,6 +105,31 @@ namespace ClientView
                 form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 form.ShowDialog();
                 LoadData();
+            }
+        }
+
+
+        private void ремонтыПоРаботамToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using var dialog = new SaveFileDialog { Filter = "xlsx|*.xlsx" };
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    reportLogic.SaveRepairWorkToExcelFile(new
+                    ReportBindingModel
+                    {
+                        FileName = dialog.FileName,
+                        UserId =(int)Program.client.Id
+                    });
+                    MessageBox.Show("Выполнено", "Успех",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

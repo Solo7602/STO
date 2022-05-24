@@ -13,6 +13,6 @@ namespace BuisnessLogic.ViewModels
         [DisplayName("Название должности")]
         public string StaffName { get; set; }
         [DisplayName("Оклад")]
-        public int StaffPrice { get; set; }
+        public decimal StaffPrice { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace DatabaseImplement.Models
         [Required]
         public string StaffName { get; set; }
         [Required]
-        public int StaffPrice { get; set; }
+        public decimal StaffPrice { get; set; }
         public virtual Staff Employees { get; set; }
     }
 }

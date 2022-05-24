@@ -10,6 +10,6 @@ namespace BuisnessLogic.BindingModels
     {
         public int? Id { get; set; }
         public string StaffName { get; set; }
-        public int StaffPrice { get; set; }
+        public decimal StaffPrice { get; set; }
     }
 }

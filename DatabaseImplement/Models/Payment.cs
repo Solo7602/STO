@@ -12,10 +12,11 @@ namespace DatabaseImplement.Models
     {
         public int Id { get; set; }
         [Required]
-        public int Sum { get; set; }
-        public int Remains { get; set; }
+        public decimal Sum { get; set; }
+        public decimal Remains { get; set; }
         [ForeignKey("RepairId")]
         public int RepairId { get; set; }
         public Repair Repair { get; set; }
+        public DateTime Date { get; set; }
     }
 }

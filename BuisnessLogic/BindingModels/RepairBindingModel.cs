@@ -6,7 +6,7 @@ namespace BuisnessLogic.BindingModels
     public class RepairBindingModel
     {
         public int? Id { get; set; }
-        public int Sum { get; set; }
+        public decimal Sum { get; set; }
         public string Name { get; set; }
         public int? ClientId { get; set; }
         public DateTime DateStart { get; set; }

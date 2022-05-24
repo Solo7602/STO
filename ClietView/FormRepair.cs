@@ -34,7 +34,7 @@ namespace ClientView
                 _logic.CreateOrUpdate(new RepairBindingModel
                 {
                     Id = id,
-                    Sum = Convert.ToInt32(textBoxSum.Text),
+                    Sum = Convert.ToDecimal(textBoxSum.Text),
                     DateStart = DateTime.Now,
                     Status = RepairStatus.Adopted,
                     Name = textBoxName.Text,

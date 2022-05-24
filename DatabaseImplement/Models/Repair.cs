@@ -18,7 +18,7 @@ namespace DatabaseImplement.Models
         public DateTime DateStart { get; set; }
         public DateTime? DateEnd { get; set; }
         [Required]
-        public int Sum { get; set; }
+        public decimal Sum { get; set; }
         public int WorkId { get; set; }
         public int? ClientId { get; set; }
         public int? EmployeeId { get; set; }

@@ -1,6 +1,8 @@
 using BuisnessLogic.BindingModels;
 using BuisnessLogic.BuisnessLogic;
 using BuisnessLogic.BuisnessLogicInterfaces;
+using BuisnessLogic.BusinessLogic.OfficePackage;
+using BuisnessLogic.BusinessLogic.OfficePackage.Implements;
 using BuisnessLogic.StorageInterfaces;
 using BuisnessLogic.ViewModels;
 using ClietView;
@@ -39,7 +41,6 @@ namespace ClientView
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FormMain());
             Application.Run(Container.Resolve<FormRegistration>());
         }
         private static IUnityContainer BuildUnityContainer()
@@ -68,6 +69,12 @@ namespace ClientView
             currentContainer.RegisterType<IStaffStorage, StaffStorage>(new
             HierarchicalLifetimeManager());
             currentContainer.RegisterType<IEmployeeStorage, EmployeeStorage>(new
+            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<ReportToExcel, SaveToExcel>(new
+            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<ReportToPdf, SaveToPdf>(new
+            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<ReportLogic>(new
             HierarchicalLifetimeManager());
             return currentContainer;
         }
